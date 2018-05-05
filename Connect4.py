@@ -1,9 +1,13 @@
 import os
+import sys
 from Jogo import Jogo
 from Jogo import bcolors
-from minimax import Int_Art
+# from minimax import Int_Art
+from minimax_poda import IntArt
 
 clear = lambda: os.system('cls')
+
+sys.setrecursionlimit(1500)
 
 def mainLoop():
     xogao = Jogo()
@@ -22,8 +26,9 @@ def mainLoop():
                 continue
 
         xogao.coloca_disco(entrada)
-        computador = Int_Art(xogao)
-        xogao.coloca_disco(computador.minimax_retorno())
+        # computador = Int_Art(xogao)
+        computador = IntArt(xogao)
+        xogao.coloca_disco(computador.buscaAlphaBeta())
 
         if xogao.alguemGanhou() != 0 or xogao.cheio():
             xogao.imprime_vencedor()
