@@ -143,7 +143,7 @@ def pontuacao(tabuleiro):
     #print("Pontuação do jogador: " + str(pontJogador) + "\n")
     pontIA = checaQuantidade(tabuleiro, 1, 2, 0) + 25*checaQuantidade(tabuleiro, 1, 3, 0) + 10000*checaQuantidade(tabuleiro, 1, 4, 0)
     #print("Pontuação da IA: " + str(pontIA) + "\n")
-    return pontIA - pontJogador
+    return pontJogador - pontIA
 
 def checaQuantidade(tabuleiro, jogador, qtdPecas, printar):
     contador=0

@@ -22,7 +22,6 @@ def mainLoop():
                 continue
 
         xogao.coloca_disco(entrada)
-
         computador = Int_Art(xogao)
         xogao.coloca_disco(computador.minimax_retorno())
 

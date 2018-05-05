@@ -6,15 +6,15 @@ PROFUNDIDADEM = 5
 class Int_Art:
     jogo_copia = None
 
-    def __init__(self, jogo_atual):
-        self.jogo_copia = copy.deepcopy(jogo_atual)
+    def __init__(self, jogo):
+        self.jogo_copia = jogo
 
     def max_retorno(self, contador):
         if self.jogo_copia.alguemGanhou() != 0 or self.jogo_copia.cheio() or contador == PROFUNDIDADEM:
             return pontuacao(self.jogo_copia.tabuleiro)
         valor_no = float('-inf')
-        for i in self.jogo_copia.ondeLivre:
-            if i == -1:
+        for i in range(7):
+            if self.jogo_copia.ondeLivre[i] == -1:
                 continue
             self.jogo_copia.coloca_disco(i)
             valor_no = max(valor_no, self.mini_retorno(contador+1))
@@ -25,8 +25,8 @@ class Int_Art:
         if self.jogo_copia.alguemGanhou() != 0 or self.jogo_copia.cheio() or contador == PROFUNDIDADEM:
             return pontuacao(self.jogo_copia.tabuleiro)
         valor_no = float('inf')
-        for i in self.jogo_copia.ondeLivre:
-            if i == -1:
+        for i in range(7):
+            if self.jogo_copia.ondeLivre[i] == -1:
                 continue
             self.jogo_copia.coloca_disco(i)
             valor_no = min(valor_no, self.max_retorno(contador+1))
